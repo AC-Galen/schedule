@@ -1,11 +1,13 @@
+if(process.env.NODE_ENV !== 'production'){
+  require('dotenv').config()
+}
 const express = require('express')
 const exphbs = require('express-handlebars')
-const { route } = require('./routes')
 
 const routes = require('./routes')
 
 const app = express()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: ".hbs" }))
 app.set('view engine', 'hbs')

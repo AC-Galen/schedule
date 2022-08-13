@@ -1,6 +1,12 @@
 const express = require('express')
-const User = require('../../models/user')
 const router = express.Router()
+const User = require('../../models/user')
+const passport = require('passport')
+
+router.post('login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/users/login'
+}))
 
 //登入
 router.get('/login', (req, res) => {

@@ -12,9 +12,16 @@
 <body class="be-light">
   <header>
     <nav class="navbar navbar-dark justify-content-between" style="padding: 8xp 16px; background-color:	#8B4513;">
-      <a href="/" class="navbar-brand">Personal Schedule</a>
+      <a href="/" class="navbar-brand">
+      {{#if isAuthenticated}}{{ user.name }}的 {{/if}}
+      Personal Schedule
+      </a>
+
+      {{#if isAuthenticated}}
       <a href="/users/logout" class="btn btn-outline-light">登出</a>
+      {{else}}
       <a href="/users/login" class="btn btn-outline-light">登入</a>
+      {{/if}}
     </nav>
   </header>
 

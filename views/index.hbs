@@ -1,5 +1,25 @@
-<div class="row mt-5">
-  {{> message}}
-  <a href="/records/new" type="button" class="btn btn-warning col-4 mx-auto">新增計畫表</a>
+<div class="row mt-5 col-5 mx-auto">
+<h4> 嗨!  歡迎回來，今天是２０２２年８月１６日</h4>
+<a href="/schedule/new" type="button" class="btn btn-warning mt-3">新增計畫表</a>
 </div>
-<h2>handlebars測試功能</h2>
+
+<div class="row mt-5">
+  <div class="col-7 mx-auto">
+    <div class="list-group">
+      <li class="row">
+        <div class="col-8 list-group-item list-group-item-light">
+          <h2 class="fw-bold">{{ this.memo }}</h2>
+          <h5 class="fw-bold">{{ this.date }}</h5>
+        </div>
+        <div class="col-auto">
+          <a class="btn btn-info" href="/schedule/{{ this._id }}">詳細內容</a>
+          <a class="btn btn-success" href="/schedule/{{ this._id }}/edit">修改</a>
+          <form class="/schedule/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+            <button type="submit" class="btn btn-danger">刪除</button>
+          </form>
+        </div> 
+        </div>
+        </li>
+    </div>
+  </div>
+</div>

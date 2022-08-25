@@ -1,0 +1,12 @@
+[
+  {
+    "name": "友人A",
+    "email": "root1@example.com",
+    "password": "12345678"
+  },
+  {
+    "name": "友人B",
+    "email": "root2@example.com",
+    "password": "12345678"
+  }
+]

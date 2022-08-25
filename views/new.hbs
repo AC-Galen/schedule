@@ -1,0 +1,40 @@
+<div class="row mt-5">
+  <div class="col-6 mx-auto"> 
+    <form action="/schedule" method="POST">
+    <div class="mb-3 row">
+      <label for="date" class="col-sm-5">日期</label>
+      <div class="col-sm-9">
+        <input type="date" class="form-control" id="date" name="date">
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="memo" class="col-sm-5">Memo</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="memo" name="memo">
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="reminder" class="col-sm-5">Reminder</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="reminder" name="reminder">
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="todo" class="col-sm-5">TodoList</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" name="todo" id="todo">
+      </div>
+    </div>
+
+    <div class="mt-3 row">
+      <span class="col-sm-5 col-form-label fs-3"></span>
+      <div class="col-sm-9">
+        <button type="submit" class="btn btn-outline-dark form-control">新增行事曆</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>

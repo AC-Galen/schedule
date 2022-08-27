@@ -10,8 +10,6 @@ const Todo = require('../todo')
 
 const users = require('./users.json')
 const schedules = require('./schedule.json')
-const user = require('../user')
-
 
 
 db.once('open', async () => {

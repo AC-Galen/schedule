@@ -4,9 +4,10 @@
 </div>
 
 <div class="row mt-5">
+  {{#each ScheduleData}}
   <div class="col-7 mx-auto">
     <div class="list-group">
-      <li class="row">
+      <li class="row mb-3">
         <div class="col-8 list-group-item list-group-item-light">
           <h2 class="fw-bold">{{ this.memo }}</h2>
           <h5 class="fw-bold">{{ this.date }}</h5>
@@ -22,4 +23,5 @@
         </li>
     </div>
   </div>
+  {{/each}}
 </div>

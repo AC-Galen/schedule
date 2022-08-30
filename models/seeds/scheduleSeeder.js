@@ -10,6 +10,7 @@ const Todo = require('../todo')
 
 const users = require('./users.json')
 const schedules = require('./schedule.json')
+const todos = require('./todo.json')
 
 
 db.once('open', async () => {
@@ -32,6 +33,7 @@ db.once('open', async () => {
         await Schedule.create(schedule)
       })
     )
+
     process.exit()
   } catch (err) {
     console.log(err)

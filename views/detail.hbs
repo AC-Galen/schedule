@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    {{#each ScheduleData}}
+    <div class="col-12 mx-auto">
+        <span class="text-secondary">日期:</span>
+      {{ this.date }}
+    </div>
+
+    <div class="row">
+      <div class="col-12 mx-auto">
+          <span class="text-secondary">Memo:</span>
+        {{ this.memo }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 mx-auto">
+        <p class="mt-3 mb-0">
+          <span class="text-secondary">Reminder:</span>
+        </p>
+        {{ this.reminder }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 mx-auto">
+        <p class="mt-3 mb-0">
+          <span class="text-secondary">Todos:</span>
+        </p>
+        {{ this.todo }}
+      </div>
+    </div>
+
+
+    <div class="mt-5">
+        <a class="btn btn-success" href="/schedule/{{ this._id }}/edit">修改</a>
+        <form action="/schedule/{{ this._id }}/delete?_method=DELETE" method="POST" style="display: inline;">
+          <button type="submit" class="btn btn-danger">刪除</button>
+        </form>
+        <a href="/"><button type="button" class="btn btn-primary">返回首頁</button></a>
+    </div>
+  {{/each}}
+  </div>
+</div>

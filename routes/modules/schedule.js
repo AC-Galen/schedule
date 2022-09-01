@@ -3,7 +3,7 @@ const router = express.Router()
 const Schedule = require('../../models/schedule')
 const Todo = require('../../models/todo')
 
-//新增的頁面
+
 router.get('/new', async (req, res) => {
   try {
     res.render('new')
@@ -12,8 +12,6 @@ router.get('/new', async (req, res) => {
   }
 })
 
-
-//新增資料
 router.post('/', async (req, res) => {
   try {
     const schedule = req.body
@@ -25,8 +23,6 @@ router.post('/', async (req, res) => {
   }
 })
 
-
-//取得詳細頁面
 router.get('/:id', async (req, res) => {
   try {
     const userId = req.user._id  //使用者id
@@ -39,7 +35,6 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-//取得修改的頁面
 router.get('/:id/edit', async (req, res) => {
   try {
     const _id = req.params.id
@@ -50,8 +45,6 @@ router.get('/:id/edit', async (req, res) => {
   }
 })
 
-
-//修改schedule 資料
 router.put('/:id', async (req, res) => {
   try {
     const _id = req.params.id
@@ -65,8 +58,6 @@ router.put('/:id', async (req, res) => {
   }
 })
 
-
-//刪除頁面
 router.delete('/:id/delete', async(req, res) => {
   try {
     const userId = req.user._id
@@ -81,6 +72,27 @@ router.delete('/:id/delete', async(req, res) => {
 
 
 
+//拿到新增todo 頁面
+router.get('/todos/new', async (req, res) => {
+  try {
+    res.render('todo')
+  } catch (err) {
+    console.log(err)
+  }
+})
+
+//新增todo資料到schedule的detail頁面
+router.post('/:id', async (req, res) => {
+  try {
+    const _id = req.params.id
+    const todo = req.body
+    todo.userId = req.user._id
+    await Todo.create(todo)
+    res.redirect('/')
+  } catch(err) {
+  console.log(err)
+  }
+})
 
 
 module.exports = router

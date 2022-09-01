@@ -2,8 +2,8 @@ const bcrypt = require('bcryptjs')
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
-
 const db = require('../../config/mongoose')
+
 const User = require('../user')
 const Schedule = require('../schedule')
 const Todo = require('../todo')
@@ -30,11 +30,19 @@ db.once('open', async () => {
       schedules.map(async schedule => {
         const user = await User.findOne({ name: schedule.user })
         schedule.userId = user._id
-        await Schedule.create(schedule)
+        await Schedule.create(schedule) 
       })
     )
 
+    await Promise.all(
+      todos.map(async todo => {
+        const schedule = await Schedule.findOne({ memo: todo.memo })  //利用在todo和schedule內的 memo 比對並建立Id
+        todo.scheduleId = schedule._id
+        await Todo.create(todo)
+      })
+    )
     process.exit()
+
   } catch (err) {
     console.log(err)
   }

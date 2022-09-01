@@ -1,34 +1,26 @@
-<h1 class="mb-1">新增行程</h1>
+<h1 class="mb-4">新增行程</h1>
 <div class="container">
   <form action="/schedule" method="POST">
     <div class="mb-3">
-      <label for="date" class="col-sm-5">日期</label>
+      <label for="date" class="col-sm-5 fs-4">日期:</label>
       <div class="col-sm-9">
         <input type="date" class="form-control" id="date" name="date">
       </div>
     </div>
 
     <div class="mb-3">
-      <label for="memo" class="col-sm-5">memo</label>
+      <label for="memo" class="col-sm-5 fs-4">memo:</label>
       <div class="col-sm-9">
         <input type="text" class="form-control" id="memo" name="memo">
       </div>
     </div>
 
     <div class="mb-3">
-      <label for="reminder" class="col-sm-5">reminder</label>
+      <label for="reminder" class="col-sm-5 fs-4">reminder:</label>
       <div class="col-sm-9">
         <input type="text" class="form-control" id="reminder" name="reminder">
       </div>
     </div>
-
-    <div class="mb-3">
-      <label for="todo" class="col-sm-5">todo</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="todo" name="todo">
-      </div>
-    </div>
-
 
     <div class="text-center">
         <button type="submit" class="btn btn-outline-dark">新增行程</button>
@@ -37,3 +29,4 @@
     </div>
   </form>
 </div>
+

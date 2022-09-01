@@ -1,38 +1,42 @@
+<h1 class="mb-4">詳細內容</h1>
 <div class="container">
   <div class="row">
+
     {{#each ScheduleData}}
-    <div class="col-12 mx-auto">
-        <span class="text-secondary">日期:</span>
-      {{ this.date }}
+    <div class="col-12 mb-3 mx-auto">
+        <span class="text fs-4">日期: {{ this.date }}</span>
+
     </div>
 
     <div class="row">
-      <div class="col-12 mx-auto">
-          <span class="text-secondary">Memo:</span>
-        {{ this.memo }}
+      <div class="col-12 mb-3 mx-auto">
+          <span class="text fs-4">Memo: {{ this.memo }}</span>
+
       </div>
     </div>
 
     <div class="row">
-      <div class="col-12 mx-auto">
+      <div class="col-12 mb-5 mx-auto">
         <p class="mt-3 mb-0">
-          <span class="text-secondary">Reminder:</span>
+          <span class="text fs-4">Reminder: {{ this.reminder }}</span>
         </p>
-        {{ this.reminder }}
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-12 mx-auto">
-        <p class="mt-3 mb-0">
-          <span class="text-secondary">Todos:</span>
-        </p>
-        {{ this.todo }}
+    <div class="mb-3">
+      <label for="todo" class="col-sm-5 fs-4">Todo: <a href="/schedule/todos/new"
+          class="btn btn-primary btn-primary-sm mb-3 ">新增</a></label>
+      <div class="input-group">
+        {{#each TodoData}}
+          <input class="form-control" type="text" placeholder="name" name="name" value="{{ this.name }}" disabled>
+          <a class="btn btn-success" href="/schedule/todos/{{ this._id }}/edit">修改</a>
+          <button class="btn btn-danger" type="submit">刪除</button>
+        {{/each}}
       </div>
     </div>
 
 
-    <div class="mt-5">
+    <div class="text-center mt-5">
         <a class="btn btn-success" href="/schedule/{{ this._id }}/edit">修改</a>
         <form action="/schedule/{{ this._id }}/delete?_method=DELETE" method="POST" style="display: inline;">
           <button type="submit" class="btn btn-danger">刪除</button>

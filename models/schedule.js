@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const scheduleSchema = new Schema({
   memo: { type: String, required: true },
-  reminder: { type: String, required: true },
+  reminder: { type: String, required: false },
   date: { type: String, required: true },
   createAt: { type: Date, default: Date.now },
   userId: { type: Schema.Types.ObjectId, ref: 'User', index: true, required: true }

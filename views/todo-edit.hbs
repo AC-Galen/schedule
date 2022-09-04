@@ -1,0 +1,22 @@
+
+{{#each TodoData}}
+<h3 class="mb-5">更動Todo</h3>
+<form action="/schedule/{{ this.scheduleId }}/todos/{{this._id}}?_method=PUT" method="POST" style="display: inline;">
+
+
+  <div class="input-group mb-5">
+    <div class="input-group-text">
+      <input type="checkbox" name="isDone" {{#if this.isDone}} checked {{/if}}>
+    </div>
+
+    <input class="form-control" type="text" placeholder="今天要做些什麼?" name="name" value="{{ this.name }}" required />
+    <button class="btn btn-success" type="submit">送出</button>
+    <button type="reset" class="btn btn-danger">清除</button>
+  </div>
+
+  <div class="text-center">
+    <a href="/"><button type="button" class="btn btn-outline-secondary">返回首頁</button></a>
+    <a href="/schedule/{{ this.scheduleId }}"><button type="button" class="btn btn-outline-secondary">返回</button></a>
+  </div>
+</form>
+{{/each}}

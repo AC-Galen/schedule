@@ -36,7 +36,7 @@ db.once('open', async () => {
 
     await Promise.all(
       todos.map(async todo => {
-        const schedule = await Schedule.findOne({ memo: todo.memo })  //利用在todo和schedule內的 memo 比對並建立Id
+        const schedule = await Schedule.findOne({ memo: todo.memo })
         todo.scheduleId = schedule._id
         await Todo.create(todo)
       })

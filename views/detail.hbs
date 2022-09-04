@@ -1,11 +1,18 @@
-<h1 class="mb-4">詳細內容</h1>
+
 <div class="container">
   <div class="row">
-
     {{#each ScheduleData}}
+    <div class="col-12 mb-5 mx-auto">
+      <span class="text fs-1">詳細內容
+      <a class="btn btn-success" href="./{{ this._id }}/edit">編輯</a>
+      <form action="./{{ this._id }}/delete?_method=DELETE" method="POST" style="display: inline;">
+        <button type="submit" class="btn btn-danger">刪除</button>
+      </form>
+      </span>
+    </div>
+
     <div class="col-12 mb-3 mx-auto">
         <span class="text fs-4">日期: {{ this.date }}</span>
-
     </div>
 
     <div class="row">
@@ -15,34 +22,38 @@
       </div>
     </div>
 
+{{#if this.reminder}}
     <div class="row">
-      <div class="col-12 mb-5 mx-auto">
+      <div class="col-12 mb-2 mx-auto">
         <p class="mt-3 mb-0">
           <span class="text fs-4">Reminder: {{ this.reminder }}</span>
         </p>
       </div>
     </div>
+{{/if}}
 
-    <div class="mb-3">
-      <label for="todo" class="col-sm-5 fs-4">Todo: <a href="/schedule/todos/new"
-          class="btn btn-primary btn-primary-sm mb-3 ">新增</a></label>
-      <div class="input-group">
-        {{#each TodoData}}
-          <input class="form-control" type="text" placeholder="name" name="name" value="{{ this.name }}" disabled>
-          <a class="btn btn-success" href="/schedule/todos/{{ this._id }}/edit">修改</a>
-          <button class="btn btn-danger" type="submit">刪除</button>
-        {{/each}}
-      </div>
+    <div class="mt-5 mb-3">
+      <label for="name" class="col-sm-5 fs-4">Todo:
+        <a href="./{{ this._id }}/todos/new" class="btn btn-primary">新增</a>
     </div>
 
-
-    <div class="text-center mt-5">
-        <a class="btn btn-success" href="/schedule/{{ this._id }}/edit">修改</a>
-        <form action="/schedule/{{ this._id }}/delete?_method=DELETE" method="POST" style="display: inline;">
-          <button type="submit" class="btn btn-danger">刪除</button>
-        </form>
-        <a href="/"><button type="button" class="btn btn-primary">返回首頁</button></a>
-    </div>
-  {{/each}}
-  </div>
+    {{/each}}
 </div>
+
+
+{{#each TodoData}}
+<form action="/schedule/{{this.scheduleId}}/todos/{{ this._id }}/delete?_method=DELETE" method="POST" style="display: inline;">
+
+  <div class="input-group mb-2">
+    
+    <div class="input-group-text">
+      <input type="checkbox" name="isDone" {{#if this.isDone}} checked {{/if}} disabled>
+    </div>
+
+    <input class="form-control" type="text" name="name" value="{{ this.name }}" disabled>
+    <a class="btn btn-success" href="/schedule/{{this.scheduleId}}/todos/{{ this._id }}/edit">編輯</a>
+    <button class="btn btn-danger" type="submit">刪除</button>
+
+  </div>
+</form>
+{{/each}}

@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     const userId = req.user._id
     const name = req.user.name
 
-    const ScheduleData = await Schedule.find({ userId }).sort({ _id: 'asc' }).lean()
+    const ScheduleData = await Schedule.find({ userId }).sort({ _id: 'desc' }).lean()
     const user = await User.findOne({ name }).lean()
     const date = dayjs().format('YYYY年MM月DD日') 
     

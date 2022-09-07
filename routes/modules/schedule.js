@@ -62,7 +62,7 @@ router.put('/:id', async (req, res) => {
   }
 })
 //刪除頁面 (有避免todo髒資料留存，一同刪除)
-router.delete('/:id/delete', async(req, res) => {
+router.delete('/:id', async(req, res) => {
   try {
     const userId = req.user._id
     const _id = req.params.id
@@ -125,7 +125,6 @@ router.put('/:id/todos/:todoid', async (req, res) => {
     let todo = await Todo.findById(_id)
     todo = Object.assign(todo, req.body)
     todo.isDone = isDone === "on"
-    console.log(todo)
     await todo.save()
     res.redirect(`/schedule/${_schedule}`)
   } catch (err) {
@@ -135,7 +134,7 @@ router.put('/:id/todos/:todoid', async (req, res) => {
 
 
 //刪除todo資料
-router.delete('/:id/todos/:todoid/delete', async (req, res) => {
+router.delete('/:id/todos/:todoid', async (req, res) => {
   try {
     const _id = req.params.todoid
     const _schedule = req.params.id

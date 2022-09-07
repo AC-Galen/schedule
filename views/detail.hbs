@@ -5,7 +5,7 @@
     <div class="col-12 mb-5 mx-auto">
       <span class="text fs-1">詳細內容
       <a class="btn btn-success" href="./{{ this._id }}/edit">編輯</a>
-      <form action="./{{ this._id }}/delete?_method=DELETE" method="POST" style="display: inline;">
+      <form action="./{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
         <button type="submit" class="btn btn-danger">刪除</button>
       </form>
       </span>
@@ -42,7 +42,7 @@
 
 
 {{#each TodoData}}
-<form action="/schedule/{{this.scheduleId}}/todos/{{ this._id }}/delete?_method=DELETE" method="POST" style="display: inline;">
+<form action="/schedule/{{this.scheduleId}}/todos/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
 
   <div class="input-group mb-2">
     

@@ -23,7 +23,6 @@ router.post('/', async (req, res) => {
   }
 })
 
-//取得特定一個頁面並給予資料(schedule和todo資料庫的)
 router.get('/:id', async (req, res) => {
   try {
     const _id = req.params.id
@@ -31,7 +30,7 @@ router.get('/:id', async (req, res) => {
     const scheduleId = _id
 
     const ScheduleData = await Schedule.find({ _id, userId }).lean()
-    const TodoData = await Todo.find({ scheduleId }).lean()  //To do資料庫能找到的資料就只有scheduleId(相關)
+    const TodoData = await Todo.find({ scheduleId }).lean()
 
     return res.render('detail', { ScheduleData, TodoData })
   } catch(err) {
@@ -39,7 +38,6 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-//進去編輯的頁面
 router.get('/:id/edit', async (req, res) => {
   try {
     const _id = req.params.id
@@ -49,7 +47,7 @@ router.get('/:id/edit', async (req, res) => {
     console.log(err)
   }
 })
-//編輯頁面的功能
+
 router.put('/:id', async (req, res) => {
   try {
     const _id = req.params.id
@@ -61,7 +59,7 @@ router.put('/:id', async (req, res) => {
     console.log(err)
   }
 })
-//刪除頁面 (有避免todo髒資料留存，一同刪除)
+
 router.delete('/:id', async(req, res) => {
   try {
     const userId = req.user._id
@@ -77,9 +75,6 @@ router.delete('/:id', async(req, res) => {
 })
 
 
-
-
-//拿到新增todo 頁面
 router.get('/:id/todos/new', async (req, res) => {
   try {
     const userId = req.user._id
@@ -90,7 +85,7 @@ router.get('/:id/todos/new', async (req, res) => {
     console.log(err)
   }
 })
-//新增todo資料
+
 router.post('/:id', async (req, res) => {
   try {
     const _id = req.params.id
@@ -104,7 +99,6 @@ router.post('/:id', async (req, res) => {
 })
 
 
-//進入編輯todo頁面
 router.get('/:id/todos/:todoid/edit', async (req, res) => {
   try {
     const _id = req.params.todoid
@@ -116,7 +110,6 @@ router.get('/:id/todos/:todoid/edit', async (req, res) => {
   }
 })
 
-//編輯todo資料
 router.put('/:id/todos/:todoid', async (req, res) => {
   try {
     const _id = req.params.todoid
@@ -132,8 +125,6 @@ router.put('/:id/todos/:todoid', async (req, res) => {
   }
 })
 
-
-//刪除todo資料
 router.delete('/:id/todos/:todoid', async (req, res) => {
   try {
     const _id = req.params.todoid

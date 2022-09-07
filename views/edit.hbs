@@ -2,21 +2,21 @@
 <div class="container">
   <form action="/schedule/{{ schedule._id }}?_method=PUT" method="POST">
     <div class="mb-3">
-      <label for="date" class="col-sm-5">日期</label>
+      <label for="date" class="col-sm-5">日期*</label>
       <div class="col-sm-9">
-        <input type="date" class="form-control" id="date" name="date" value="{{schedule.date}}">
+        <input type="date" class="form-control" id="date" name="date" value="{{schedule.date}}" required />
       </div>
     </div>
 
     <div class="mb-3">
-      <label for="memo" class="col-sm-5">memo</label>
+      <label for="memo" class="col-sm-5">Memo*</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="memo" name="memo" value="{{schedule.memo}}">
+        <input type="text" class="form-control" id="memo" name="memo" value="{{schedule.memo}}" required />
       </div>
     </div>
 
     <div class="mb-3">
-      <label for="reminder" class="col-sm-5">reminder</label>
+      <label for="reminder" class="col-sm-5">Reminder</label>
       <div class="col-sm-9">
         <input type="text" class="form-control" id="reminder" name="reminder" value="{{schedule.reminder}}">
       </div>
